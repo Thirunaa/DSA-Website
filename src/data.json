@@ -1,0 +1,31 @@
+[
+  {
+    "id": 0,
+    "title": "Two Sum",
+    "link": "https://leetcode.com/problems/two-sum/",
+    "notes": "2sum,3sum,water_container.pdf",
+    "videoLink": "https://youtu.be/ot4JyaKD6cM",
+    "mySolution": "https://github.com/Thirunaa/Blind75/blob/main/Two_Sum/twoSum.py",
+    "summary": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order."
+  },
+
+  {
+    "id": 1,
+    "title": "3 Sum",
+    "link": "https://leetcode.com/problems/3sum/",
+    "notes": "2sum,3sum,water_container.pdf",
+    "videoLink": "https://youtu.be/ot4JyaKD6cM",
+    "mySolution": "https://github.com/Thirunaa/Blind75/blob/main/Three_Sum/threeSum.py",
+    "summary": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. Notice that the solution set must not contain duplicate triplets."
+  },
+
+  {
+    "id": 2,
+    "title": "Coin Change",
+    "link": "https://leetcode.com/problems/coin-change/",
+    "notes": "2sum,3sum,water_container.pdf",
+    "videoLink": "https://youtu.be/FiUT2Sb-6Kc",
+    "mySolution": "https://github.com/Thirunaa/Blind75/blob/main/Coin_Change/coinChange.py",
+    "summary": "You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money. Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1. You may assume that you have an infinite number of each kind of coin."
+  }
+]
