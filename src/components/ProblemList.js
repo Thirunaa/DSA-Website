@@ -59,7 +59,7 @@ const ProblemList = () => {
       <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={Problem.id}>
         <Card className={classes.card} variant="outlined">
           <CardActionArea>
-            <Link to={`/problem/${Problem.id}`}>
+            <Link to={`/dsawebsite/problem/${Problem.id}`}>
               {/* <CardMedia
                 className={classes.media}
                 component="img"

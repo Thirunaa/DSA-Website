@@ -10,8 +10,8 @@ const App = () => {
       <div className="App">
         <div className="App-body">
           <Routes>
-            <Route path="/" element={<ProblemList />} />
-            <Route path="/problem/:id" element={<Problem />} />
+            <Route path="/dsawebsite/" element={<ProblemList />} />
+            <Route path="/dsawebsite/problem/:id" element={<Problem />} />
           </Routes>
         </div>
       </div>
