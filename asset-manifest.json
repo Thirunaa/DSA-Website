@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/dsawebsite/static/css/main.5b205690.css",
-    "main.js": "/dsawebsite/static/js/main.3d54b266.js",
+    "main.js": "/dsawebsite/static/js/main.98942ea4.js",
     "static/js/787.957bb1c4.chunk.js": "/dsawebsite/static/js/787.957bb1c4.chunk.js",
     "static/media/2sum,3sum,water_container.pdf": "/dsawebsite/static/media/2sum,3sum,water_container.785e9acc842296b23377.pdf",
     "index.html": "/dsawebsite/index.html",
     "main.5b205690.css.map": "/dsawebsite/static/css/main.5b205690.css.map",
-    "main.3d54b266.js.map": "/dsawebsite/static/js/main.3d54b266.js.map",
+    "main.98942ea4.js.map": "/dsawebsite/static/js/main.98942ea4.js.map",
     "787.957bb1c4.chunk.js.map": "/dsawebsite/static/js/787.957bb1c4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5b205690.css",
-    "static/js/main.3d54b266.js"
+    "static/js/main.98942ea4.js"
   ]
 }
