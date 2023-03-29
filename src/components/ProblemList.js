@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import problemData from "../data.json";
+import filterData from "../filterData.json";
+import SearchProblems from "./SearchProblems";
+import FilterProblems from "./FilterProblems";
 import {
   Card,
   CardActionArea,
@@ -45,14 +48,52 @@ const ProblemList = () => {
   const classes = useStyles();
   const regex = /(<([^>]+)>)/gi;
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [filteredData, setfilteredData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterTerms, setfilterTerms] = useState([]);
   let card = null;
 
   useEffect(() => {
-    console.log("search useEffect fired");
-    const data = problemData;
+    console.log("Problem list useEffect fired");
+    setData(problemData);
     setLoading(false);
-    console.log(data);
   }, []);
+
+  useEffect(() => {
+    console.log("search useEffect fired");
+    let dataList = [];
+
+    for (const problem of problemData) {
+      if (problem["title"].includes(searchTerm)) {
+        dataList.push(problem);
+      }
+    }
+    setData(dataList);
+    setLoading(false);
+  }, [searchTerm]);
+
+  const searchValue = async (value) => {
+    setSearchTerm(value);
+  };
+
+  useEffect(() => {
+    console.log("filter useEffect fired");
+    let dataList = [];
+    for (const filterTerm of filterTerms) {
+      console.log(filterData[filterTerm]);
+      for (const id of filterData[filterTerm]) {
+        dataList.push(problemData[id]);
+      }
+    }
+    setfilteredData(dataList);
+    setData(dataList);
+    setLoading(false);
+  }, [filterTerms]);
+
+  const filterProblems = async (value) => {
+    setfilterTerms(value);
+  };
 
   const buildCard = (Problem) => {
     return (
@@ -83,11 +124,35 @@ const ProblemList = () => {
     );
   };
 
-  card =
-    problemData &&
-    problemData.map((Problem) => {
-      return buildCard(Problem);
-    });
+  if (filterTerms.length !== 0) {
+    if (searchTerm) {
+      card =
+        data &&
+        data.map((Problem) => {
+          return buildCard(Problem);
+        });
+    } else {
+      card =
+        filteredData &&
+        filteredData.map((Problem) => {
+          return buildCard(Problem);
+        });
+    }
+  } else {
+    if (searchTerm) {
+      card =
+        data &&
+        data.map((Problem) => {
+          return buildCard(Problem);
+        });
+    } else {
+      card =
+        problemData &&
+        problemData.map((Problem) => {
+          return buildCard(Problem);
+        });
+    }
+  }
 
   if (loading) {
     return (
@@ -99,6 +164,11 @@ const ProblemList = () => {
     return (
       <div>
         <Container>
+          <br />
+          <SearchProblems searchValue={searchValue} />
+          <br />
+          <FilterProblems filterterms={filterProblems} />
+          <br />
           <br />
           <br />
           <Grid container className={classes.grid} spacing={5}>
