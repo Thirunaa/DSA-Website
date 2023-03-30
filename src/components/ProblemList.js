@@ -50,6 +50,7 @@ const ProblemList = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [filteredData, setfilteredData] = useState([]);
+  const [filterFlag, setFilterFlag] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterTerms, setfilterTerms] = useState([]);
   let card = null;
@@ -63,15 +64,23 @@ const ProblemList = () => {
   useEffect(() => {
     console.log("search useEffect fired");
     let dataList = [];
-
-    for (const problem of problemData) {
-      if (problem["title"].includes(searchTerm)) {
-        dataList.push(problem);
+    if (filterFlag) {
+      for (const problem of filteredData) {
+        if (problem["title"].toLowerCase().includes(searchTerm.toLowerCase())) {
+          dataList.push(problem);
+        }
+      }
+    } else {
+      for (const problem of problemData) {
+        if (problem["title"].toLowerCase().includes(searchTerm.toLowerCase())) {
+          dataList.push(problem);
+        }
       }
     }
+
     setData(dataList);
     setLoading(false);
-  }, [searchTerm]);
+  }, [searchTerm, filterFlag, filteredData]);
 
   const searchValue = async (value) => {
     setSearchTerm(value);
@@ -80,6 +89,7 @@ const ProblemList = () => {
   useEffect(() => {
     console.log("filter useEffect fired");
     let dataList = [];
+
     for (const filterTerm of filterTerms) {
       console.log(filterData[filterTerm]);
       for (const id of filterData[filterTerm]) {
@@ -87,7 +97,13 @@ const ProblemList = () => {
       }
     }
     setfilteredData(dataList);
-    setData(dataList);
+    if (filterTerms.length !== 0) {
+      setFilterFlag(true);
+    } else {
+      setFilterFlag(false);
+    }
+
+    //setData(dataList);
     setLoading(false);
   }, [filterTerms]);
 
@@ -124,7 +140,7 @@ const ProblemList = () => {
     );
   };
 
-  if (filterTerms.length !== 0) {
+  if (filterFlag) {
     if (searchTerm) {
       card =
         data &&
